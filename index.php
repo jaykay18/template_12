@@ -81,8 +81,7 @@ Password:<input type="password" name="pass"><br>
 </div>
 <div class="footer">
 <!--DO NOT Remove The Footer Links-->
-<p class="copyright">Copyright 2013. Designed by <a target="_blank"
- href="http://www.itmindia.edu/">itmu</a>
+<p class="copyright">Copyright 2013. Designed by Jayant Kumar, Abhishek Arora, Rohan Arora, Sonali Bhatnagar
 <!--DO NOT Remove The Footer Links-->
 </p>
 </div>

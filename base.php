@@ -6,7 +6,7 @@ $db = new PDO('mysql:host=localhost;dbname=testdb;charset=utf8', 'username', 'pa
 */
 
 try {
-$dbinfo = new PDO('mysql:host=localhost;dbname=my_db;charset=utf8','test_code','test_code'); //Change your server details here!
+$dbinfo = new PDO('mysql:host=localhost;dbname=my_db;charset=utf8','root','abcd'); //Change your server details here!
 session_start(); //Starting session on base file directly. Need not call it anywhere else.
 }
 catch(PDOException $ex){
