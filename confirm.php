@@ -1,23 +1,34 @@
-<html>
-<head>
-<meta http-equiv="refresh" content="0; url=http://localhost/template_12/phplogin.php"> 
-</head>
-</html>
 <?php
-$con=mysqli_connect("localhost","root","abcd","my_db");
-// Check connection
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-
-$sql="INSERT INTO master_data (Party_Name, Description, Liability_Year, Forum, Amount_Pending)
-VALUES
-('$_POST[Party_Name]','$_POST[Description]','$_POST[Liability_Year]','$_POST[Forum]','$_POST[Amount_Pending]')";
-
-if (!mysqli_query($con,$sql))
-  {
-  die('Error: ' . mysqli_error($con));
-  }
-mysqli_close($con);
+include('base.php'); 
+?>
+<?php
+if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['uname']))
+	{
+if(!empty($_POST['party']) && !empty($_POST['description']) && !empty($_POST['liability']) && !empty($_POST['forum']) && !empty($_POST['amount_pending']))
+{
+	$party=$_POST['party'];
+	$des=$_POST['description'];
+	$lia=$_POST['liability'];
+	$forum=$_POST['forum'];
+	$ap=$_POST['amount_pending'];
+	$uid=$_SESSION['uid'];
+	$sql=$dbinfo->prepare("INSERT INTO master_data(uid,Party_Name,Description,Liability_Year,Forum,Amount_Pending) VALUES(?,?,?,?,?,?)");
+	$sql->execute(array($uid,$party,$des,$lia,$forum,$ap));
+	if($sql)
+	{
+		echo "Successfully Added. <a href=\"show.php\">Check Added Data</a>. ";
+		}
+		else
+		{
+			echo "Something went wrong while adding data.";
+			}
+}
+	else
+	{
+		echo "Error Catching Data";
+		}
+}	
+		else {
+			   echo "You are not authorized to do this.";
+		}
 ?>

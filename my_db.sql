@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
+-- version 3.5.2.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 24, 2013 at 05:44 PM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.12
+-- Generation Time: Jul 27, 2013 at 05:20 PM
+-- Server version: 5.5.27
+-- PHP Version: 5.4.7
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -19,8 +19,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `my_db`
 --
-CREATE DATABASE IF NOT EXISTS `my_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `my_db`;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login`
+--
+
+CREATE TABLE IF NOT EXISTS `login` (
+  `uid` int(11) NOT NULL AUTO_INCREMENT,
+  `uname` varchar(65) NOT NULL,
+  `upass` varchar(65) NOT NULL,
+  `uemail` varchar(65) NOT NULL,
+  `ulogintime` varchar(20) NOT NULL,
+  `ulastlogouttime` varchar(20) NOT NULL,
+  `ustatus` tinyint(1) NOT NULL,
+  PRIMARY KEY (`uid`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `login`
+--
+
+INSERT INTO `login` (`uid`, `uname`, `upass`, `uemail`, `ulogintime`, `ulastlogouttime`, `ustatus`) VALUES
+(2, 'test', '$2y$11$QNuo9RLYeXc4g2yGfZWwr.9MJf2lVZ.GQg9iKbJ12BnmBgG17tPvu', 'test@test.com', '27-07-2013 17:08:29', '27-07-2013 17:08:22', 1);
 
 -- --------------------------------------------------------
 
@@ -29,6 +51,7 @@ USE `my_db`;
 --
 
 CREATE TABLE IF NOT EXISTS `master_data` (
+  `uid` int(10) NOT NULL,
   `Party_Name` varchar(255) DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL,
   `Liability_Year` int(11) DEFAULT NULL,
@@ -40,72 +63,10 @@ CREATE TABLE IF NOT EXISTS `master_data` (
 -- Dumping data for table `master_data`
 --
 
-INSERT INTO `master_data` (`Party_Name`, `Description`, `Liability_Year`, `Forum`, `Amount_Pending`) VALUES
-('Jayant', 'not paid', 2001, 'delhi', '10000'),
-('Jayant Kumar', 'payment not received', 2008, 'mumbai', '20,000');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `persons`
---
-
-CREATE TABLE IF NOT EXISTS `persons` (
-  `firstname` varchar(255) DEFAULT NULL,
-  `lastname` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `phpro_users`
---
-
-CREATE TABLE IF NOT EXISTS `phpro_users` (
-  `phpro_user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `phpro_username` varchar(20) NOT NULL,
-  `phpro_password` char(40) NOT NULL,
-  PRIMARY KEY (`phpro_user_id`),
-  UNIQUE KEY `phpro_username` (`phpro_username`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user`
---
-
-CREATE TABLE IF NOT EXISTS `user` (
-  `user_id` int(20) NOT NULL AUTO_INCREMENT,
-  `username` varchar(20) NOT NULL,
-  `password` char(40) NOT NULL,
-  PRIMARY KEY (`user_id`),
-  UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`user_id`, `username`, `password`) VALUES
-(1, 'ffasad', '435d5cf7217f1b735792b2bcafad0c2b95596c4d'),
-(2, 'jayant', '123456');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `users`
---
-
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) DEFAULT NULL,
-  `password` varchar(50) DEFAULT NULL,
-  `role` varchar(20) DEFAULT NULL,
-  `created` datetime DEFAULT NULL,
-  `modified` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+INSERT INTO `master_data` (`uid`, `Party_Name`, `Description`, `Liability_Year`, `Forum`, `Amount_Pending`) VALUES
+(2, 'testparty', 'testdesc', 2002, 'chennai', '2000'),
+(2, 'test3', 'testdesc 3', 2012, 'delhi', '2000000'),
+(2, 'test2', 'testdesc 2', 2012, 'delhi', '2000000');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

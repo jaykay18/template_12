@@ -1,13 +1,8 @@
 <?php
-$con=mysqli_connect("localhost","root","abcd","my_db");
-// Check connection
-if (mysqli_connect_errno())
-  {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-  }
-
-$result = mysqli_query($con,"SELECT * FROM master_data");
-
+include('base.php');
+if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['uname']))
+	{
+		$uid = $_SESSION['uid'];
 echo "<table border='1'>
 <tr>
 <th>Party Name</th>
@@ -17,9 +12,14 @@ echo "<table border='1'>
 <th>Pending Amount</th>
 </tr>";
 
-while($row = mysqli_fetch_array($result))
-  {
-  echo "<tr>";
+$sql= $dbinfo->prepare("SELECT * FROM master_data WHERE uid =?");
+		$sql->execute(array($uid));
+		$result = $sql->fetchALL();
+			if ($result)
+			{
+				foreach($result as $row)
+				{
+	 echo "<tr>";
   echo "<td>" . $row['Party_Name'] . "</td>";
   echo "<td>" . $row['Description'] . "</td>";
   echo "<td>" . $row['Liability_Year'] . "</td>";
@@ -28,6 +28,14 @@ while($row = mysqli_fetch_array($result))
   echo "</tr>";
   }
 echo "</table>";
-
-mysqli_close($con);
+}
+else
+{
+	echo "Error fetching data";
+	}
+}
+else
+{
+	echo "You are not authorized to access this page.";
+	}
 ?> 
