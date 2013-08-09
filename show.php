@@ -3,6 +3,7 @@ include('base.php');
 if(!empty($_SESSION['LoggedIn']) && !empty($_SESSION['uname']))
 	{
 		$uid = $_SESSION['uid'];
+		echo "<p><a href=\"editdata.php\">Edit Below Listed Data</a></p>";
 echo "<table border='1'>
 <tr>
 <th>Party Name</th>
@@ -31,7 +32,7 @@ echo "</table>";
 }
 else
 {
-	echo "Error fetching data";
+	echo "No data added by you.";
 	}
 }
 else
