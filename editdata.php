@@ -20,10 +20,11 @@ $sql= $dbinfo->prepare("SELECT * FROM master_data WHERE uid =?");
 				foreach($result as $row)
 				{
 					$rownum=$row['dataid'];
+					$desc_display=$row['Description'];
 	 echo "<form name=\"form$rownum\" action=\"updaterow.php\" method=\"post\"><tr>";
 	 echo "<input name=\"dataid\" type=\"hidden\" value=\"$rownum\" />";
   echo "<td><input name=\"partyname\" type=\"text\" value=". $row['Party_Name']." /></td>";
-  echo "<td><input name=\"description\" type=\"text\" value=". $row['Description'] ." /></td>";
+  echo "<td><input name=\"description\" type=\"textarea\" value=\"$desc_display\" /></td>";
   echo "<td><input name=\"liability\" type=\"text\" value=". $row['Liability_Year']." /></td>";
   echo "<td><input name=\"forum\" type=\"text\" value=". $row['Forum']." /></td>";
   echo "<td><input name=\"amountpend\" type=\"text\" value=". $row['Amount_Pending']." /></td>";
