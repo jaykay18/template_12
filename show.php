@@ -25,14 +25,14 @@ $sql= $dbinfo->prepare("SELECT * FROM master_data WHERE uid =?");
   echo "<td>" . $row['Liability_Year'] . "</td>";
   echo "<td>" . $row['Forum'] . "</td>";
   echo "<td>" . $row['Amount_Pending'] . "</td>";
-  echo "</tr>";
+  echo "<td><a href=\"edit_form.php?id=$row[Party_Name]\">Edit</a></td></tr>"; //adding edit button
   }
 echo "</table>";
 }
-else
+/*else
 {
 	echo "Error fetching data";
-	}
+	}*/
 }
 else
 {

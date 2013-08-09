@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 28, 2013 at 06:48 PM
+-- Generation Time: Aug 09, 2013 at 07:16 AM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -44,8 +44,8 @@ CREATE TABLE IF NOT EXISTS `login` (
 --
 
 INSERT INTO `login` (`uid`, `uname`, `upass`, `uemail`, `ulogintime`, `ulastlogouttime`, `ustatus`) VALUES
-(2, 'test', '$2y$11$QNuo9RLYeXc4g2yGfZWwr.9MJf2lVZ.GQg9iKbJ12BnmBgG17tPvu', 'test@test.com', '28-07-2013 18:29:14', '27-07-2013 17:08:22', 1),
-(123458, 'Jayant', '$2y$11$K.JiMlEptrOyPIrgWWkR3uv/7qnl4YrZOnMpB4agVSshYb7ExpA6O', 'jay@gmail.com', '28-07-2013 18:29:14', '28-07-2013 16:29:11', 1);
+(2, 'test', '$2y$11$QNuo9RLYeXc4g2yGfZWwr.9MJf2lVZ.GQg9iKbJ12BnmBgG17tPvu', 'test@test.com', '09-08-2013 07:06:11', '27-07-2013 17:08:22', 1),
+(123458, 'Jayant', '$2y$11$K.JiMlEptrOyPIrgWWkR3uv/7qnl4YrZOnMpB4agVSshYb7ExpA6O', 'jay@gmail.com', '09-08-2013 07:06:11', '28-07-2013 16:29:11', 1);
 
 -- --------------------------------------------------------
 
@@ -54,6 +54,7 @@ INSERT INTO `login` (`uid`, `uname`, `upass`, `uemail`, `ulogintime`, `ulastlogo
 --
 
 CREATE TABLE IF NOT EXISTS `master_data` (
+  `uid` int(10) NOT NULL,
   `Party_Name` varchar(255) DEFAULT NULL,
   `Description` varchar(255) DEFAULT NULL,
   `Liability_Year` int(11) DEFAULT NULL,
@@ -65,9 +66,9 @@ CREATE TABLE IF NOT EXISTS `master_data` (
 -- Dumping data for table `master_data`
 --
 
-INSERT INTO `master_data` (`Party_Name`, `Description`, `Liability_Year`, `Forum`, `Amount_Pending`) VALUES
-('Jayant', 'not paid', 2001, 'delhi', '10000'),
-('Jayant Kumar', 'payment not received', 2008, 'mumbai', '20,000');
+INSERT INTO `master_data` (`uid`, `Party_Name`, `Description`, `Liability_Year`, `Forum`, `Amount_Pending`) VALUES
+(123458, 'Jayant', 'abcd', 2010, 'delhi', '10000'),
+(123458, 'Jayant', 'abcd', 2010, 'delhi', '10000');
 
 -- --------------------------------------------------------
 
